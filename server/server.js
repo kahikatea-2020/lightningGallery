@@ -1,9 +1,12 @@
-const path = require('path')
-const express = require('express')
+const express = require("express");
+const server = express();
+const cors = require("cors");
+const path = require("path");
 
-const server = express()
+server.use(cors());
+server.use(express.urlencoded({ extended: true }));
+server.use(express.static(path.resolve("public")));
 
-server.use(express.json())
-server.use(express.static(path.join(__dirname, './public')))
+server.use("/api/topics", require("./routes/topics"));
 
-module.exports = server
+module.exports = server;
