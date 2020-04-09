@@ -1,7 +1,14 @@
-const router = require("express").Router();
+const router = require("express").Router()
+const db = require('../db')
 
 router.get("/", (req, res) => {
-  res.send("do something in get route");
+  db.getTopics()
+    .then(topics => res.json(topics))
 });
+
+router.post('/new', (req, res) => {
+  db.newTopic(req.body)
+    .then(() => res.json(true))
+})
 
 module.exports = router;
