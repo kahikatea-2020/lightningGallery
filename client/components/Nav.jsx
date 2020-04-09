@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import homeIcon from '../images/home.png'
+import {Route, Link} from '.react-router-dom'
 
 class Nav extends Component {
   render() {
@@ -17,3 +18,5 @@ class Nav extends Component {
     )
   } 
 }
+
+export default Nav
