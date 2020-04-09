@@ -8,6 +8,7 @@ class Comment extends Component {
       <div>
         <p>{this.props.comment}</p>
       </div>
+      
     )
   }
 }
