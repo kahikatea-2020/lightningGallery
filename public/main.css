@@ -1,14 +1,14 @@
 .navBar {
-  width:400px;
-  height:100vh;
-  position:sticky;
-  top:0px;
-  background:lightgray;
+  width: 400px;
+  height: 100vh;
+  position: sticky;
+  top: 0px;
+  background: lightgray;
 }
 
 /* HOME STYLES */
-.home{
-  display:flex;
+.home {
+  display: flex;
 }
 
 .ui.card{
@@ -17,10 +17,10 @@
   margin: 10px !important;
 }
 
-.homeGallery{
-  width:100%;
-  display:flex;
-  padding:50px;
+.homeGallery {
+  width: 100%;
+  display: flex;
+  padding: 50px;
   flex-wrap: wrap;
 }
 
@@ -28,3 +28,14 @@
   margin: 2%;
   font-size: 2em;
 }
+
+.logo {
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  background-color: aqua;
+}
+
+/* .logo, .title, .addTopic, .homeBtn, .about {
+  min-height:
+} */
