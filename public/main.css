@@ -1,0 +1,29 @@
+.navBar {
+  width:400px;
+  height:100vh;
+  position:sticky;
+  top:0px;
+  background:lightgray;
+}
+
+/* HOME STYLES */
+.home{
+  display:flex;
+}
+
+.ui.card{
+  height:500px;
+  width:20%;
+}
+
+.homeGallery{
+  width:100%;
+  display:flex;
+  padding:50px;
+  flex-wrap: wrap;
+}
+
+.icon {
+  margin: 2%;
+  font-size: 2em;
+}

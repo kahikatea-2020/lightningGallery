@@ -1,14 +1,16 @@
 import React from 'react'
-import Comments from './Comments'
-import Test from './Test'
-
+import Topic from './Topic'
+import Home from './Home'
+// import Form from './Form'
+import { Route } from 'react-router-dom'
 const App = () => {
-	return (
-		<>
-			<Comments />
-			<Test />
-		</>
-	)
+  return (
+    <>
+    <Route exact path ="/" component = {Home}/>
+    <Route path="/topic/:id" component = {Topic} />
+      {/* <Route path="/form" component={Form} />  */}
+    </>
+  )
 }
 
 export default App
