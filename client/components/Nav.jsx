@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 
 class Nav extends Component {
-  render() {
+  render () {
     const navBar = ['Home', '<', '>']
-    const { id ,topics, description } = this.props.topics
+    const { id, topics, description } = this.props.topics
+
+    return (
+      <div className = "navBar" >
+        <h3>{description}</h3>
+      </div>
+    )
   }
-  return(
-    <div className = "navBar" >
-      <h3>{description}</h3>
-    </div>
-  )
 }
+
+export default Nav
