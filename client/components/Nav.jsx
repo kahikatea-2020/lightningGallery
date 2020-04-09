@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
+import homeIcon from '../images/home.png'
 
 class Nav extends Component {
   render() {
-    const navBar = ['Home', '<', '>']
-    const { id ,topics, description } = this.props.topics
-  }
-  return(
-    <div className = "navBar" >
-      <h3>{description}</h3>
-    </div>
-  )
+      
+    return (
+    
+      <div className="navBar">
+        <img src={homeIcon} className="homeIcon" />
+        <h3>&lt;</h3>
+        <h3>&gt;</h3>
+        <h3>&lt;&lt;</h3>
+        <h3>&gt;&gt;</h3>
+      </div>
+    
+    )
+  } 
 }
