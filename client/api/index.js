@@ -9,11 +9,11 @@ export const getTopics = () => {
 };
 
 export const getTopic = (id) => {
-  return api.get(`/topics/${id}`)
-}
+  return api.get(`/topics/${id}`);
+};
 
 export const newTopic = (data) => {
-  return api.post(`/new`, data);
+  return api.post(`/topics/new`, data);
 };
 
 export const updateTopic = (id, data) => {
@@ -21,7 +21,7 @@ export const updateTopic = (id, data) => {
 };
 
 export const getTopicsComments = (id) => {
-  return api.get(`/comments/topic/${id}`);  // changed due to params clashing
+  return api.get(`/comments/topic/${id}`); // changed due to params clashing
 };
 
 export const getComments = () => {
