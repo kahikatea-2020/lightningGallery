@@ -3,20 +3,25 @@ import Comment from "./Comment"
 import { getTopicsComments } from "../api/index"
 
 class Comments extends Component {
-  state = { display: false }
+  state = {
+    comments: "",
+  }
 
+  componentDidMount() {
+    getTopicsComments(this.props.topicId).then((result) => {
+      this.setState({
+        comments: result.data,
+      })
+    })
+  }
   render() {
-    console.log(getTopicsComments(this.props.topicId))
-
-    return (
-      <div>
-        {getTopicsComments(Number(this.props.topicId)).then((comments) => {
-          return comments.map((commentsObj) => {
-            return <Comment comment={commentsObj.comment} />
-          })
-        })}
-      </div>
-    )
+    console.log(this.state.comments)
+    if (this.state.comments === "") {
+      return <div>Loading</div>
+    }
+    return this.state.comments.map((object) => {
+      return <Comment comment={object.comments} />
+    })
   }
 }
 

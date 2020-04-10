@@ -20,7 +20,7 @@ class FormTopic extends Component {
       this.props.history.push("/")
     })
   }
-
+  //
   render() {
     return (
       <div className='TopicFormContainer'>

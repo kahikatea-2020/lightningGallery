@@ -3,7 +3,7 @@ import Nav from "./Nav"
 import Comments from "./comments"
 import { Rating } from "semantic-ui-react"
 import { getTopic, newComment } from "../api"
-
+import { withRouter } from "react-router-dom"
 class Topic extends Component {
   state = {
     topic: "",
@@ -28,13 +28,13 @@ class Topic extends Component {
       rating: this.state.rating,
       comments: this.state.comments,
     }).then(() => {
-      console.log(this.props.history)
-
-      this.props.history.push("/topic/view/" + this.state.topic.id)
+      this.props.history.push(`/topic/view/${this.state.topic.id}`)
     })
   }
   render() {
     const { topic } = this.state
+    console.log(this.props)
+
     if (topic === "") return <div>Loading</div>
     return (
       <div className='topic'>
