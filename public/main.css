@@ -93,7 +93,9 @@ body {
   display: flex;
   padding: 100px;
 }
-
+.topicContent {
+  width: 100%;
+}
 .topicImg {
   width: 500px;
   overflow: hidden;
@@ -120,14 +122,29 @@ body {
   width: 100px;
   border-radius: 50%;
   background: lightgray;
+  background: cover;
+  margin-top: 20px;
+  margin-left: 50px;
+  overflow: hidden;
+}
+.comments {
+  padding-bottom: 100px;
+}
+.commentImg img {
+  width: 100%;
 }
 .postComment {
   width: 250px;
+  height: 50px;
+  margin: 50px;
 }
 .commentInput {
   height: 50px;
-  flex-grow: 1;
-  margin: 50px;
+  width: 800px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+  padding-left: 50px;
 }
 button {
   display: inline-block;

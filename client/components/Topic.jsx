@@ -2,8 +2,7 @@ import React, { Component } from "react"
 import Nav from "./Nav"
 import Comments from "./comments"
 import { Rating } from "semantic-ui-react"
-import { getTopic } from "../api"
-
+import { getTopic, newComment } from "../api"
 class Topic extends Component {
   state = {
     topic: "",
@@ -20,7 +19,7 @@ class Topic extends Component {
     return (
       <div className='topic'>
         <Nav />
-        <div>
+        <div className='topicContent'>
           <div className='topicMain'>
             <div className='topicImg'>
               <img src={topic.url} />
@@ -46,17 +45,26 @@ class Topic extends Component {
           </div>
 
           <div>
-            <div className='container'>
+            <div className='comments container'>
               <h1>Comments</h1>
               <div className='addComment'>
-                <div className='commentImg'></div>
-                <input
-                  className='commentInput'
-                  name='newComment'
-                  type='text'
-                  placeholder='posting publicly as guest'
-                />
-                <button className='postComment'>Post Comment</button>
+                <div className='commentImg'>
+                  <img
+                    src='https://uploads.scratch.mit.edu/users/avatars/395/5762.png'
+                    alt='guest image'
+                  />
+                </div>
+                <form action='api'>
+                  <input
+                    className='commentInput'
+                    name='newComment'
+                    type='text'
+                    placeholder='posting publicly as guest'
+                  />
+                  <button type='submit' className='postComment'>
+                    Post Comment
+                  </button>
+                </form>
               </div>
               <Comments />
             </div>
