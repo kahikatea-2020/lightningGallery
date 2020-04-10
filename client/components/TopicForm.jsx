@@ -1,7 +1,8 @@
 import React, { Component } from "react"
 import { newTopic } from "../api"
+import { Form, TextArea } from "semantic-ui-react"
 
-export class FormTopic extends Component {
+class FormTopic extends Component {
   state = {
     title: "",
     presenter: "",
@@ -22,45 +23,46 @@ export class FormTopic extends Component {
 
   render() {
     return (
-      <div className='topicForm'>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>Title</label>
-            <input
-              type='text'
-              name='title'
-              onChange={this.handleChange}
-              value={this.state.title}
-            />
-          </div>
-          <div class='topicForm'>
-            <label>Presenter</label>
-            <input
-              type='text'
-              name='presenter'
-              onChange={this.handleChange}
-              value={this.state.presenter}
-            />
-          </div>
-          <div class='topicForm'>
-            <label>Url</label>
-            <input
-              type='text'
-              name='url'
-              onChange={this.handleChange}
-              value={this.state.url}
-            />
-          </div>
-          <div class='topicForm'>
+      <div className='TopicFormContainer'>
+        <Form onSubmit={this.handleSubmit}>
+          <label>Title</label>
+          <Form.Input
+            type='text'
+            name='title'
+            onChange={this.handleChange}
+            value={this.state.title}
+          />
+
+          <label>Presenter</label>
+          <Form.Input
+            type='text'
+            name='presenter'
+            onChange={this.handleChange}
+            value={this.state.presenter}
+          />
+
+          <label>Url</label>
+          <Form.Input
+            type='text'
+            name='url'
+            onChange={this.handleChange}
+            value={this.state.url}
+          />
+
+          <div className='textArea'>
             <label>Description</label>
-            <input
-              type='text'
+            <TextArea
+              type='textarea'
               name='description'
               onChange={this.handleChange}
               value={this.state.description}
             />
           </div>
-        </form>
+
+          <div>
+            <button type='submit'>Submit</button>
+          </div>
+        </Form>
       </div>
     )
   }

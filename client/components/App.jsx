@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
       <Route exact path='/' component={Home} />
-      <Route exact path='/topic/new/' component={TopicForm} />
+      <Route exact path='/topic/new' component={TopicForm} />
       <Route exact path='/topic/view/:id' component={Topic} />
     </>
   )
