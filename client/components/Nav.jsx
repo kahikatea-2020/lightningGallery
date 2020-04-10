@@ -1,47 +1,29 @@
-<<<<<<< HEAD
-import React, { Component } from 'react'
-// import homeIcon from '../images/home.png'
-import { Route, Link } from 'react-router-dom'
-=======
-import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
->>>>>>> b17fa055d341968b88721308eda1e0b961093358
+import React, { Component } from "react"
+import { Route, Link, withRouter } from "react-router-dom"
 
 class Nav extends Component {
   render() {
     return (
-<<<<<<< HEAD
-
-      <div className="navBar">
-        {/* <img src={homeIcon} className="homeIcon" /> */}
-        <i className="fas fa-home icon"></i>
-        <i className="fas fa-arrow-left icon"></i>
-        <i className="fas fa-arrow-right icon"></i>
-        <i className="fas fa-fast-forward icon"></i>
-        <i className="fas fa-fast-backward icon"></i>
-      </div>
-
-    )
-=======
-      <div className="navBar">
-        <div className="logo">LOGO</div>
-        <div className="title">TITLE</div>
-        <div className="addTopic">
-          <button>Add topic</button>
+      <div className='navBar'>
+        <div className='logo'></div>
+        <div className='title'>TITLE</div>
+        <div className='addTopic'>
+          <button>ADD TOPIC</button>
         </div>
-        <div className="homeBtn">
-          <button>Home Button</button>
+        <div className='homeBtn'>
+          <button onClick={() => this.props.history.push("/")}>
+            <i className='fas fa-home icon'></i>
+          </button>
         </div>
-        <div className="about">About</div>
+        <div className='about'>About</div>
         {/* <i class="fas fa-home icon"></i>
         <i class="fas fa-arrow-left icon"></i>
         <i class="fas fa-arrow-right icon"></i>
         <i class="fas fa-fast-forward icon"></i>
         <i class="fas fa-fast-backward icon"></i> */}
       </div>
-    );
->>>>>>> b17fa055d341968b88721308eda1e0b961093358
+    )
   }
 }
 
-export default Nav;
+export default withRouter(Nav)

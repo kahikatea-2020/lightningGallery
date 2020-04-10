@@ -1,20 +1,30 @@
-import React from 'react'
-import Nav from './Nav'
-import Card from './Card'
-class Home extends React.Component {
-  render() {
-    return (
-      <div className="home">
-        <Nav />
-        <div className="homeGallery">
+import React from "react"
+import Nav from "./Nav"
+import Card from "./Card"
+import { getTopics } from "../api"
 
-          {[1, 2, 3, 4, 5, 6, 7, 8].map(() => {
-            return (
-              <Card />
-            )
+class Home extends React.Component {
+  state = {
+    topics: "",
+  }
+
+  componentDidMount() {
+    getTopics().then((topics) => {
+      this.setState({ topics: topics.data })
+    })
+  }
+
+  render() {
+    if (this.state.topics === "") return <div>Loading</div>
+    return (
+      <div className='home'>
+        <Nav />
+        <div className='homeGallery'>
+          {this.state.topics.map((topic, i) => {
+            return <Card key={i} topic={topic} />
           })}
         </div>
-      </div >
+      </div>
     )
   }
 }

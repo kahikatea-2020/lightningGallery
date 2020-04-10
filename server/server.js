@@ -4,7 +4,8 @@ const cors = require("cors");
 const path = require("path");
 
 server.use(cors());
-server.use(express.urlencoded({ extended: true }));
+server.use(express.urlencoded({ extended: false }));
+server.use(express.json());
 server.use(express.static(path.resolve("public")));
 
 server.use("/api/topics", require("./routes/topics"));

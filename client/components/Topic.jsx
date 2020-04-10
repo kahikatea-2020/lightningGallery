@@ -1,41 +1,68 @@
-import React, { Component } from 'react'
-import Nav from './Nav'
-import Comments from './comments'
+import React, { Component } from "react"
+import Nav from "./Nav"
+import Comments from "./comments"
+import { Rating } from "semantic-ui-react"
+import { getTopic } from "../api"
+
 class Topic extends Component {
-  render () {
+  state = {
+    topic: "",
+  }
+
+  componentDidMount() {
+    getTopic(this.props.match.params.id).then((topic) => {
+      this.setState({ topic: topic.data })
+    })
+  }
+  render() {
+    const { topic } = this.state
+    if (topic === "") return <div>Loading</div>
     return (
-      <div>
-        <Nav/>
+      <div className='topic'>
+        <Nav />
         <div>
-          <div>
-            <img src="https://www.getastra.com/blog/wp-content/uploads/2017/05/xsql-injection-2-650x350.png.pagespeed.ic.UdZjd3jX0J.webp"/>
-          </div>
-          <div>
-            <h1>A Title</h1>
-            <h4>Name: Park Min Young</h4>
-            <h4>Description</h4>
-            <p>Description Description Description Description</p>
-            <div>
+          <div className='topicMain'>
+            <div className='topicImg'>
+              <img src={topic.url} />
+            </div>
+            <div className='topicText'>
+              <h1>{topic.title}</h1>
+              <h4>{topic.name}</h4>
+              <h4>Description</h4>
+              <p>{topic.description}</p>
               <div>
-                <h4>Rating</h4>
-                <div className="ui star rating" data-rating="3" max-rating="5"></div>
+                <div className='topicRating'>
+                  <h4>Rating</h4>
+                  <Rating
+                    disabled
+                    icon='star'
+                    defaultRating={4}
+                    maxRating={5}
+                  />
+                </div>
+                <button>EDIT INFO</button>
               </div>
-              <button>EDIT INFO</button>
             </div>
           </div>
 
-          <h1>Comments</h1>
-          <div className="addComment">
-            <div className="commentImg">
-
+          <div>
+            <div className='container'>
+              <h1>Comments</h1>
+              <div className='addComment'>
+                <div className='commentImg'></div>
+                <input
+                  className='commentInput'
+                  name='newComment'
+                  type='text'
+                  placeholder='posting publicly as guest'
+                />
+                <button className='postComment'>Post Comment</button>
+              </div>
+              <Comments />
             </div>
-            <input name="newComment" type="text" placeholder="posting publicly as guest"/>
-            <button>Post Comment</button>
           </div>
         </div>
-        <Comments />
       </div>
-
     )
   }
 }

@@ -7,6 +7,10 @@ function getTopics(db = connection) {
   return db("topics").select();
 }
 
+function getTopic(id, db = connection) {
+  return db("topics").where("id", id).select().first();
+}
+
 function updateTopic(id, data, db = connection) {
   return db("topics").where("id", id).update(data);
 }
@@ -32,9 +36,11 @@ function getTopicsComments(id, db = connection) {
 
 module.exports = {
   getTopics,
+  getTopic,
   updateTopic,
   newTopic,
   newComments,
   getComments,
   getTopicsComments,
+  getTopic
 };

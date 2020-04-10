@@ -11,4 +11,12 @@ router.post("/new", (req, res) => {
   db.newComments(req.body).then(() => res.json(true));
 });
 
+// api/comments/topic/:id
+router.get("/topic/:id", (req, res) => {
+  const topicsId = Number(req.params.id);
+  db.getTopicsComments(topicsId).then((result) => {
+    res.json(result);
+  })
+})
+
 module.exports = router;

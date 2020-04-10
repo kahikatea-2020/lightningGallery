@@ -19,12 +19,9 @@ router.post("/update/:id", (req, res) => {
   });
 });
 
-// api/topics/:id/comments
-router.get("/:id/comments", (req, res) => {
-  const topicsId = Number(req.params.id);
-  db.getTopicsComments(topicsId).then((result) => {
-    res.json(result);
-  });
+// api/topics/:id/
+router.get("/:id", (req, res) => {
+  db.getTopic(req.params.id).then((topic) => res.json(topic));
 });
 
 module.exports = router;
