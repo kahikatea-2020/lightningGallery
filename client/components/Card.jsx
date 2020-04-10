@@ -22,7 +22,7 @@ class Card extends React.Component {
     return (
       <>
         <div
-          onClick={() => this.props.history.push(`/topic/${id}`)}
+          onClick={() => this.props.history.push(`/topic/view/${id}`)}
           className='ui card'
         >
           <div className='image'>

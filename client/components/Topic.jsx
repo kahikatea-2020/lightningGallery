@@ -3,14 +3,34 @@ import Nav from "./Nav"
 import Comments from "./comments"
 import { Rating } from "semantic-ui-react"
 import { getTopic, newComment } from "../api"
+
 class Topic extends Component {
   state = {
     topic: "",
+    comments: "",
+    rating: 0,
   }
 
   componentDidMount() {
     getTopic(this.props.match.params.id).then((topic) => {
       this.setState({ topic: topic.data })
+    })
+  }
+
+  handleOnChange = (evt) => {
+    this.setState({ [evt.target.name]: evt.target.value })
+  }
+
+  handleSubmit = (evt) => {
+    evt.preventDefault()
+    newComment({
+      topics_id: this.state.topic.id,
+      rating: this.state.rating,
+      comments: this.state.comments,
+    }).then(() => {
+      console.log(this.props.history)
+
+      this.props.history.push("/topic/view/" + this.state.topic.id)
     })
   }
   render() {
@@ -54,19 +74,28 @@ class Topic extends Component {
                     alt='guest image'
                   />
                 </div>
-                <form action='api'>
+                <form onSubmit={this.handleSubmit}>
                   <input
                     className='commentInput'
-                    name='newComment'
+                    onChange={this.handleOnChange}
+                    value={this.state.comment}
+                    name='comments'
                     type='text'
                     placeholder='posting publicly as guest'
                   />
+                  <select name='rating' onChange={this.handleOnChange}>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                  </select>
                   <button type='submit' className='postComment'>
                     Post Comment
                   </button>
                 </form>
               </div>
-              <Comments />
+              <Comments topicId={this.state.topic.id} />
             </div>
           </div>
         </div>
